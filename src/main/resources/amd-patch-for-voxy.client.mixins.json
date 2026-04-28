@@ -3,7 +3,6 @@
 	"package": "me.cortex.voxy.client.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ShaderLoaderMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
