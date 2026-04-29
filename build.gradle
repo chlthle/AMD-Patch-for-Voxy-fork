@@ -1,17 +1,6 @@
-buildscript {
-    repositories {
-        maven { url 'https://maven.fabricmc.net/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath "net.fabricmc:fabric-loom:1.16-SNAPSHOT"
-    }
-}
-
 plugins {
     id 'fabric-loom' version '1.16-SNAPSHOT'
     id 'maven-publish'
-    id 'java'
 }
 
 version = project.mod_version
@@ -23,13 +12,16 @@ base {
 
 repositories {
     mavenCentral()
+    maven { url = "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:official-mojang-mappings:${project.minecraft_version}.+"
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation include("me.jellysquid.mods:sodium:${project.sodium_version}")
+    modImplementation include("me.jellysquid.mods:lithium:${project.lithium_version}")
 }
 
 processResources {
@@ -37,10 +29,6 @@ processResources {
     filesMatching("fabric.mod.json") {
         expand "version": inputs.properties.version
     }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    it.options.release = 26
 }
 
 java {
