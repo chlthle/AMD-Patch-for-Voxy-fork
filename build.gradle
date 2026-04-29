@@ -1,7 +1,11 @@
 plugins {
-    id 'fabric-loom' version '1.16+'
+    id 'fabric-loom' version '1.1+'
     id 'maven-publish'
     id 'java'
+}
+
+loom {
+    disableStandardMinecraftDependencies()
 }
 
 version = project.mod_version
@@ -42,8 +46,4 @@ jar {
     from("LICENSE") {
         rename { "${it}_${project.base.archivesName.get()}"}
     }
-}
-
-loom {
-    disableStandardMinecraftDependencies()
 }
