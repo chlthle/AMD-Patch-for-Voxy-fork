@@ -1,15 +1,5 @@
-buildscript {
-    repositories {
-        maven { url 'https://maven.fabricmc.net/' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath "net.fabricmc:fabric-loom:1.15+"
-    }
-}
-
 plugins {
-    id 'fabric-loom' version '1.15+'
+    id 'fabric-loom' version '1.16+'
     id 'maven-publish'
     id 'java'
 }
