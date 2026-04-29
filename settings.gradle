@@ -1,23 +1,14 @@
+// settings.gradle
 pluginManagement {
     repositories {
         maven {
-            name = 'Fabric'
-            url = 'https://maven.fabricmc.net/'
+            name = 'Modrinth'
+            url = 'https://maven.modrinth.com'
         }
         maven { 
             name = 'Fabric Gitee Mirror'
             url = 'https://gitee.com/mirrors_fabric/maven/raw/master/' 
         }
-        mavenCentral()
         gradlePluginPortal()
     }
-    resolutionStrategy {
-        eachPlugin {            
-            if (requested.id.id == 'net.fabricmc.fabric-loom') {
-                useVersion '1.15' 
-            }
-        }
-    }
 }
-
-rootProject.name = 'AMD-Patch-for-Voxy-fork'
