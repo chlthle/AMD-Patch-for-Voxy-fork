@@ -1,1 +1,22 @@
-rootProject.name = "AMD-Patch-for-Voxy-fork"
+// settings.gradle
+
+pluginManagement {
+    repositories {
+        maven {
+            name = 'Cloudflare Maven Mirror'
+            url = 'https://maven.cloudflare.com'
+        }
+        
+        gradlePluginPortal()
+    }
+    
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'net.fabricmc.fabric-loom') {
+                useVersion '1.16'
+            }
+        }
+    }
+}
+
+rootProject.name = 'AMD-Patch-for-Voxy-fork'
