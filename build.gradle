@@ -1,11 +1,7 @@
 plugins {
-    id 'fabric-loom' version '1.16-SNAPSHOT'
+    id 'fabric-loom' version '1.15.5'
     id 'maven-publish'
     id 'java'
-}
-
-loom {
-    disableStandardMinecraftDependencies()
 }
 
 version = project.mod_version
@@ -23,6 +19,7 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     modImplementation "net.fabricmc:fabric-loader:0.19.2"
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.147.0+26.1.2"
+    
 }
 
 processResources {
@@ -44,6 +41,6 @@ compileJava {
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from("LICENSE") {
-        rename { "${it}_${project.base.archivesName.get()}" }
+        rename { "${it}_${project.base.archivesName.get()}"}
     }
 }
