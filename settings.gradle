@@ -1,20 +1,10 @@
 pluginManagement {
     repositories {
         maven {
-            name = 'Cloudflare Maven Mirror'
-            url = 'https://maven.cloudflare.com'
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
         }
-        
         gradlePluginPortal()
     }
-    
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == 'net.fabricmc.fabric-loom') {
-                useVersion '1.16'
-            }
-        }
-    }
 }
-
 rootProject.name = 'AMD-Patch-for-Voxy-fork'
