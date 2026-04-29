@@ -1,6 +1,10 @@
 pluginManagement {
     repositories {
         maven {
+            name = 'Fabric Gitee Mirror'
+            url = 'https://maven.fabricmc.net/' 
+        }
+        maven {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
