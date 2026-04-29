@@ -1,7 +1,11 @@
 plugins {
-    id 'fabric-loom' version '1.16+'
+    id 'fabric-loom' version '1.16-SNAPSHOT'
     id 'maven-publish'
     id 'java'
+}
+
+loom {
+    disableStandardMinecraftDependencies()
 }
 
 version = project.mod_version
@@ -28,19 +32,18 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    it.options.release = 26
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(26) }
+    withSourcesJar()
 }
 
-java {
-    withSourcesJar()
-    sourceCompatibility = JavaVersion.VERSION_26
-    targetCompatibility = JavaVersion.VERSION_26
+compileJava {
+    options.release = 26
 }
 
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from("LICENSE") {
-        rename { "${it}_${project.base.archivesName.get()}"}
+        rename { "${it}_${project.base.archivesName.get()}" }
     }
 }
