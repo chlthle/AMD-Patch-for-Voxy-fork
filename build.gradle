@@ -1,8 +1,11 @@
-pluginManagement {
+buildscript {
     repositories {
         maven { url 'https://maven.fabricmc.net/' }
-        gradlePluginPortal()
         mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath "net.fabricmc:fabric-loom:1.16-SNAPSHOT"
     }
 }
 
@@ -48,6 +51,7 @@ java {
 }
 
 jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from("LICENSE") {
         rename { "${it}_${project.base.archivesName.get()}"}
     }
