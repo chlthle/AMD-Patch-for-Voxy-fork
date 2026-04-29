@@ -1,12 +1,23 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.fabricmc.net/' }
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 plugins {
-    id 'fabric-loom' version '1.16'
+    id 'fabric-loom' version '1.16-SNAPSHOT'
     id 'maven-publish'
     id 'java'
 }
 
 version = project.mod_version
 group = project.maven_group
-base.archivesName = project.archives_base_name
+
+base {
+    archivesName = project.archives_base_name
+}
 
 repositories {
     mavenCentral()
@@ -14,7 +25,7 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:official-mojang-mappings:${project.minecraft_version}.+"
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
@@ -37,9 +48,8 @@ java {
 }
 
 jar {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from("LICENSE") {
-        rename { "${it}_${project.base.archivesName.get()}" }
+        rename { "${it}_${project.base.archivesName.get()}"}
     }
 }
 
@@ -49,5 +59,7 @@ publishing {
             artifactId = project.archives_base_name
             from components.java
         }
+    }
+    repositories {
     }
 }
