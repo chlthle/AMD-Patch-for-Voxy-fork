@@ -1,5 +1,3 @@
-// settings.gradle
-
 pluginManagement {
     repositories {
         maven {
