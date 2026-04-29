@@ -1,19 +1,20 @@
 pluginManagement {
     repositories {
         maven {
-            name = 'Fabric Gitee Mirror'
-            url = 'https://maven.fabricmc.net/' 
-        }
-        maven {
             name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
+        maven { 
+            name = 'Fabric Gitee Mirror'
+            url = 'https://gitee.com/mirrors_fabric/maven/raw/master/' 
+        }
+        mavenCentral()
         gradlePluginPortal()
     }
     resolutionStrategy {
-        eachPlugin {
+        eachPlugin {            
             if (requested.id.id == 'net.fabricmc.fabric-loom') {
-                useVersion '1.7' 
+                useVersion '1.15' 
             }
         }
     }
